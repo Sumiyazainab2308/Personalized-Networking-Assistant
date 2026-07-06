@@ -277,9 +277,13 @@ networking-assistant/
 | Document | Description |
 |---|---|
 | [docs/architecture_diagram.png](docs/architecture_diagram.png) | System architecture diagram |
+| [docs/er_diagram_description.md](docs/er_diagram_description.md) | ER Diagram — 6 entities, attributes & relationships |
+| [docs/model_research.md](docs/model_research.md) | Model Research & Selection (BART vs DistilBERT, GPT-2) |
+| [docs/project_workflow.md](docs/project_workflow.md) | Step-by-step project workflow for all 3 scenarios |
 | [docs/implementation_plan.md](docs/implementation_plan.md) | Detailed implementation plan |
 | [docs/walkthrough.md](docs/walkthrough.md) | Build walkthrough & all files created |
 | [docs/run_and_deploy.md](docs/run_and_deploy.md) | Full run & deployment guide |
+| [docs/conclusion.md](docs/conclusion.md) | Project conclusion & team contributions |
 
 ---
 
