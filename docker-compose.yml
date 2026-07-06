@@ -1,0 +1,69 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Personalized Networking Assistant — Docker Compose
+# Runs FastAPI backend + Streamlit frontend as separate services
+# ─────────────────────────────────────────────────────────────────────────────
+
+version: "3.9"
+
+services:
+  # ── FastAPI Backend ──────────────────────────────────────────────────────────
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: networking-assistant-backend
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 2
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data          # Persist JSON data across restarts
+      - ./app:/app/app            # Hot-reload in dev (remove in prod)
+    environment:
+      - LOG_LEVEL=INFO
+      - DEBUG=false
+      - DATA_DIR=/app/data
+      - ALLOWED_ORIGINS=http://localhost:8501,http://frontend:8501
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s          # Give models time to load
+    restart: unless-stopped
+    networks:
+      - networking-net
+
+  # ── Streamlit Frontend ───────────────────────────────────────────────────────
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: networking-assistant-frontend
+    command: >
+      streamlit run frontend/streamlit_app.py
+        --server.port 8501
+        --server.address 0.0.0.0
+        --server.headless true
+        --browser.gatherUsageStats false
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./frontend:/app/frontend  # Hot-reload in dev
+    environment:
+      - API_BASE=http://backend:8000/api/v1
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - networking-net
+
+networks:
+  networking-net:
+    driver: bridge
+
+volumes:
+  data:
+    driver: local
