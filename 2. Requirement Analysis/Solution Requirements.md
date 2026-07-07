@@ -3,7 +3,7 @@
 
 **Project:** Personalized Networking Assistant  
 **Team Lead:** Shaik Sumiya Zainab  
-**Team Members:** Naga Jagan Mohan Rao Thattukolla, Suneetha Pappu, Satvika Tallam, Tejesh Velivela  
+**Team Members:** Naga Jagan Mohan Rao Thattukolla, Satvika Tallam, Tejesh Velivela  
 **Version:** 1.0  
 **Date:** July 2026  
 
