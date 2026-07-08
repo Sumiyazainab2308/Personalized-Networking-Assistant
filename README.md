@@ -196,7 +196,7 @@ Ensure you have Python 3.11+ installed on your system.
 
 Watch a comprehensive 5-minute walkthrough of the Personalized Networking Assistant demonstrating real-time theme extraction, starter generation, fact-checking, and dashboard analytics:
 
-[Watch Demo Video](https://youtube.com/placeholder)
+[Watch Demo Video](https://drive.google.com/file/d/1qbdaSohC3YMYkdItUmrOeAyb_ojH77q5/view?usp=drive_link)
 
 ---
 
