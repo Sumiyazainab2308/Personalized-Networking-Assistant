@@ -268,7 +268,7 @@ While the current local MVP release demonstrates high-performance edge inference
 
 | Name | Team Role | Primary Responsibilities | GitHub Profile |
 | :--- | :--- | :--- | :--- |
-| **Shaik Sumiya Zainab** | `teamLead` | Backend Architecture, FastAPI Orchestration, CI/CD Pipelines, System Integration | [@shaiksumiyazainab](https://github.com/shaiksumiyazainab) |
+| **Shaik Sumiya Zainab** | `teamLead` | Backend Architecture, FastAPI Orchestration, CI/CD Pipelines, System Integration | [@shaiksumiyazainab](https://github.com/Sumiyazainab2308) |
 | **Naga Jagan Mohan Rao Thattukolla** | `member` | AI/ML Engineering, BART Zero-Shot Classification, GPT-2 Text Generation, Prompt Engineering | [@nagajaganmohanrao](https://github.com/nagajaganmohanrao) |
 | **Satvika Tallam** | `member` | Quality Assurance Lead, Automated Pytest Suite (38 Tests), Mocking Strategy, Code Coverage ($\ge 80\%$) | [@satvikatallam](https://github.com/satvikatallam) |
 | **Tejesh Velivela** | `member` | Streamlit Frontend Engineering, Docker Containerization, DevOps Orchestration, Technical Documentation | [@tejeshvelivela](https://github.com/tejeshvelivela) |
