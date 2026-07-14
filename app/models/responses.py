@@ -5,7 +5,7 @@ All API responses are typed and serialized via these models, ensuring
 consistent JSON structure across the application.
 """
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Field
@@ -28,7 +28,7 @@ class AnalyzeEventResponse(BaseModel):
     )
     top_theme: str = Field(..., description="Highest-confidence theme label.")
     timestamp: datetime = Field(
-        default_factory=datetime.utcnow, description="UTC timestamp of analysis."
+        default_factory=lambda: datetime.now(timezone.utc), description="UTC timestamp of analysis."
     )
 
 
@@ -47,7 +47,7 @@ class ConversationStarterResponse(BaseModel):
         default=None, description="User bio if provided."
     )
     timestamp: datetime = Field(
-        default_factory=datetime.utcnow, description="UTC timestamp."
+        default_factory=lambda: datetime.now(timezone.utc), description="UTC timestamp."
     )
 
 
@@ -72,7 +72,7 @@ class FactCheckResponse(BaseModel):
     """Response for GET /fact-check."""
 
     results: List[FactCheckResult] = Field(..., description="List of fact-check results.")
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 class HistoryItem(BaseModel):
@@ -104,7 +104,7 @@ class FeedbackResponse(BaseModel):
     session_id: str
     message: str = Field(..., description="Confirmation message.")
     rating: int
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 class HealthResponse(BaseModel):

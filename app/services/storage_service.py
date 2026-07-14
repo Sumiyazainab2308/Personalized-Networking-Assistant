@@ -13,7 +13,7 @@ from __future__ import annotations
 import json
 import threading
 import uuid
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -104,7 +104,7 @@ def save_session(session_data: Dict[str, Any]) -> str:
 
     session_id = session_data.get("session_id") or str(uuid.uuid4())
     session_data["session_id"] = session_id
-    session_data.setdefault("timestamp", datetime.utcnow().isoformat())
+    session_data.setdefault("timestamp", datetime.now(timezone.utc).isoformat())
 
     with _storage_lock:
         history = _load_json(settings.history_path)
@@ -199,7 +199,7 @@ def update_session_feedback(
                 item["feedback_rating"] = rating
                 item["feedback_comment"] = comment
                 item["feedback_starter_index"] = starter_index
-                item["feedback_timestamp"] = datetime.utcnow().isoformat()
+                item["feedback_timestamp"] = datetime.now(timezone.utc).isoformat()
                 updated = True
                 break
 
